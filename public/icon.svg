@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="15" fill="#141413"/>
+  <!-- Minimalist Eagle & Monogram Emblem -->
+  <!-- Top wing / chevron -->
+  <path d="M32 14 L49 27 L43.5 28.5 L32 20 L20.5 28.5 L15 27 Z" fill="#F5F3EF"/>
+  <!-- Middle wing / horizontal tier -->
+  <path d="M32 25 L45 35.5 L40 37 L32 30.5 L24 37 L19 35.5 Z" fill="#F5F3EF" opacity="0.88"/>
+  <!-- Bottom wing / horizontal tier -->
+  <path d="M32 35.5 L41 43 L36.5 44.5 L32 40.5 L27.5 44.5 L23 43 Z" fill="#F5F3EF" opacity="0.72"/>
+  <!-- Gold tail / anchor apex -->
+  <polygon points="32,44.5 35.5,52 32,50 28.5,52" fill="#D4AF37"/>
+</svg>

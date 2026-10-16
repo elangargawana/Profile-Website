@@ -31,21 +31,28 @@ export const metadata: Metadata = {
     'React',
     'Flutter',
   ],
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
   authors: [{ name: 'Elang Argawana' }],
   creator: 'Elang Argawana',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'Elang Argawana — Frontend & Fullstack Developer',
+    title: 'Elang Argawana — Software Developer',
     description:
-      'Personal portfolio of Elang Argawana, a web and mobile developer based in Semarang, Indonesia.',
+      'Personal portfolio of Elang Argawana, a web and mobile software developer based in Semarang, Indonesia.',
     siteName: 'Elang Argawana Portfolio',
   },
   twitter: {
     card: 'summary',
-    title: 'Elang Argawana — Frontend & Fullstack Developer',
+    title: 'Elang Argawana — Software Developer',
     description:
-      'Personal portfolio of Elang Argawana, a web and mobile developer based in Semarang, Indonesia.',
+      'Personal portfolio of Elang Argawana, a web and mobile software developer based in Semarang, Indonesia.',
   },
   robots: {
     index: true,
