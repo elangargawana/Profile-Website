@@ -1,9 +1,10 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/sections/Hero';
-import { SelectedWork } from '@/components/sections/SelectedWork';
-import { Capabilities } from '@/components/sections/Capabilities';
 import { About } from '@/components/sections/About';
+import { Specialty } from '@/components/sections/Specialty';
+import { Capabilities } from '@/components/sections/Capabilities';
+import { SelectedWork } from '@/components/sections/SelectedWork';
 import { Experience } from '@/components/sections/Experience';
 import { Education } from '@/components/sections/Education';
 import { Organization } from '@/components/sections/Organization';
@@ -16,9 +17,10 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <SelectedWork />
-        <Capabilities />
         <About />
+        <Specialty />
+        <Capabilities />
+        <SelectedWork />
         <Experience />
         <Education />
         <Organization />

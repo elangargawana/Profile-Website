@@ -59,7 +59,7 @@ export function Contact() {
       <div className="max-w-7xl mx-auto">
         <div ref={headRef}>
           <p className="font-mono text-[11px] tracking-[0.14em] text-[#5a5a5a] uppercase mb-6">
-            08
+            09
           </p>
           <h2 className="text-[clamp(32px,5vw,72px)] font-light tracking-[-0.02em] text-[#f5f3ef] leading-tight mb-6">
             {t.contact.heading}

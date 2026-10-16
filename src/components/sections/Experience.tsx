@@ -47,7 +47,6 @@ export function Experience() {
     >
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          index="04"
           heading={t.experience.heading}
           subheading={t.experience.subheading}
         />

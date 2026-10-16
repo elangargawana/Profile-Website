@@ -18,6 +18,17 @@ export interface HeroTranslations {
   available: string;
 }
 
+export interface SpecialtyTranslations {
+  heading: string;
+  subheading: string;
+  services: SpecialtyServiceTranslation[];
+}
+
+export interface SpecialtyServiceTranslation {
+  title: string;
+  description: string;
+}
+
 export interface WorkTranslations {
   heading: string;
   subheading: string;
@@ -48,6 +59,7 @@ export interface CapabilitiesTranslations {
 
 export interface AboutTranslations {
   heading: string;
+  photo_alt: string;
   paragraphs: string[];
 }
 
@@ -109,9 +121,10 @@ export interface FooterTranslations {
 export interface Translations {
   nav: NavTranslations;
   hero: HeroTranslations;
-  work: WorkTranslations;
-  capabilities: CapabilitiesTranslations;
+  specialty: SpecialtyTranslations;
   about: AboutTranslations;
+  capabilities: CapabilitiesTranslations;
+  work: WorkTranslations;
   experience: ExperienceTranslations;
   education: EducationTranslations;
   organization: OrganizationTranslations;

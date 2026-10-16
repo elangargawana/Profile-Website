@@ -45,7 +45,7 @@ export function Education() {
       aria-label="Education"
     >
       <div className="max-w-7xl mx-auto">
-        <SectionHeading index="05" heading={t.education.heading} />
+        <SectionHeading heading={t.education.heading} />
 
         <div
           ref={cardRef}

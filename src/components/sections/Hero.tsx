@@ -3,14 +3,15 @@
 import { useEffect, useRef } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { MapPin, ArrowDownRight } from 'lucide-react';
+import Image from 'next/image';
 import gsap from 'gsap';
 
 export function Hero() {
   const { t } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
   const subRef = useRef<HTMLDivElement>(null);
-  const metaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -19,124 +20,131 @@ export function Hero() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.1 });
 
-      tl.from(headlineRef.current, {
-        y: 40,
+      // Background image: slow reveal from bottom
+      tl.from(bgRef.current, {
+        scale: 1.06,
         opacity: 0,
-        duration: 1.0,
+        duration: 1.6,
         ease: 'power3.out',
       })
         .from(
-          subRef.current,
+          headlineRef.current,
           {
-            y: 24,
+            y: 40,
             opacity: 0,
-            duration: 0.8,
+            duration: 1.1,
             ease: 'power3.out',
           },
-          '-=0.6'
+          '-=1.0'
         )
         .from(
-          metaRef.current,
+          subRef.current,
           {
-            y: 16,
+            y: 20,
             opacity: 0,
-            duration: 0.6,
+            duration: 0.8,
             ease: 'power2.out',
           },
-          '-=0.5'
+          '-=0.6'
         );
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  const handleScrollToWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollTo = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section
       ref={containerRef}
       id="hero"
-      className="min-h-screen bg-[#f5f3ef] flex flex-col justify-end pb-20 md:pb-24 px-6 md:px-10 lg:px-16 pt-32"
+      className="relative min-h-screen overflow-hidden bg-[#1a1a1a]"
       aria-label="Hero"
     >
-      <div className="max-w-7xl mx-auto w-full">
-        {/* Role tag */}
-        <div className="mb-8 md:mb-12">
-          <span className="font-mono text-[11px] tracking-[0.14em] text-[#9a9a9a] uppercase">
-            {t.hero.role}
-          </span>
-        </div>
-
-        {/* Headline */}
-        <h1
-          ref={headlineRef}
-          className="text-[clamp(48px,9vw,128px)] font-light tracking-[-0.03em] text-[#1a1a1a] leading-[0.92] mb-10 md:mb-14"
-        >
-          Elang
-          <br />
-          <span className="text-[#9a9a9a]">Argawana</span>
-        </h1>
-
-        {/* Bottom row */}
-        <div
-          ref={subRef}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-12 border-t border-[#e0dbd3] pt-8 md:pt-10"
-        >
-          {/* Tagline and description */}
-          <div className="max-w-lg">
-            <p className="text-[17px] md:text-[19px] text-[#1a1a1a] leading-[1.55] font-light mb-4">
-              {t.hero.tagline}
-            </p>
-            <p className="text-[14px] md:text-[15px] text-[#7a7a7a] leading-relaxed">
-              {t.hero.description}
-            </p>
-          </div>
-
-          {/* CTAs + meta */}
-          <div ref={metaRef} className="flex flex-col gap-6 md:items-end">
-            <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-              <a
-                href="#work"
-                onClick={handleScrollToWork}
-                className="group inline-flex items-center gap-2 text-[13px] tracking-[0.06em] text-[#1a1a1a] hover:opacity-60 transition-opacity duration-300 uppercase"
-              >
-                {t.hero.cta_work}
-                <ArrowDownRight size={14} strokeWidth={1.5} className="group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-300" />
-              </a>
-              <a
-                href="#contact"
-                onClick={handleScrollToContact}
-                className="inline-flex items-center gap-2 text-[13px] tracking-[0.06em] text-[#7a7a7a] hover:text-[#1a1a1a] transition-colors duration-300 uppercase"
-              >
-                {t.hero.cta_contact}
-              </a>
-            </div>
-
-            <div className="flex items-center gap-1.5 text-[12px] text-[#9a9a9a]">
-              <MapPin size={11} strokeWidth={1.5} />
-              <span>{t.hero.location}</span>
-            </div>
-          </div>
-        </div>
+      {/* Full-viewport background image */}
+      <div ref={bgRef} className="absolute inset-0">
+        <Image
+          src="/hero-bg.jpg"
+          alt="Elang Argawana working at desk"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+          quality={90}
+        />
+        {/* Gradient overlay — dark on left for text legibility, fade to transparent on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a]/80 via-[#1a1a1a]/40 to-[#1a1a1a]/10" />
+        {/* Bottom vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/60 via-transparent to-transparent" />
       </div>
 
-      {/* Vertical scroll hint */}
-      <div className="absolute bottom-10 right-6 md:right-10 lg:right-16 hidden md:flex flex-col items-center gap-2">
-        <span
-          className="font-mono text-[10px] tracking-[0.16em] text-[#bab6b0] uppercase"
-          style={{ writingMode: 'vertical-rl' }}
+      {/* Content — absolutely positioned over the image */}
+      <div className="relative z-10 min-h-screen flex flex-col justify-between px-6 md:px-10 lg:px-16 pt-32 pb-10 md:pb-12">
+
+        {/* Main headline — bottom-left, large */}
+        <div ref={headlineRef} className="flex-1 flex flex-col justify-end max-w-2xl">
+          <div className="mb-5">
+            <span className="font-mono text-[11px] tracking-[0.16em] text-white/50 uppercase">
+              {t.hero.role}
+            </span>
+          </div>
+
+          <h1 className="text-[clamp(52px,8vw,112px)] font-light tracking-[-0.03em] text-white !leading-[0.91] mb-8">
+            Elang
+            <br />
+            <span className="text-white/40">Argawana</span>
+          </h1>
+
+        </div>
+
+        {/* Bottom bar */}
+        <div
+          ref={subRef}
+          className="border-t border-white/15 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
-          Scroll
-        </span>
-        <div className="w-px h-12 bg-gradient-to-b from-[#bab6b0] to-transparent" />
+          {/* Location */}
+          <div className="flex items-center gap-1.5 text-[11px] text-white/40">
+            <MapPin size={11} strokeWidth={1.5} />
+            <span>{t.hero.location}</span>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex items-center gap-6">
+            <a
+              href="#work"
+              onClick={handleScrollTo('work')}
+              className="group inline-flex items-center gap-2 text-[12px] tracking-[0.08em] text-white/80 hover:text-white transition-colors duration-300 uppercase"
+            >
+              {t.hero.cta_work}
+              <ArrowDownRight
+                size={12}
+                strokeWidth={1.5}
+                className="group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-300"
+              />
+            </a>
+            <a
+              href="#contact"
+              onClick={handleScrollTo('contact')}
+              className="text-[12px] tracking-[0.08em] text-white/40 hover:text-white/80 transition-colors duration-300 uppercase"
+            >
+              {t.hero.cta_contact}
+            </a>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="hidden lg:flex flex-col items-center gap-2">
+            <span
+              className="font-mono text-[10px] tracking-[0.16em] text-white/30 uppercase"
+              style={{ writingMode: 'vertical-rl' }}
+            >
+              Scroll
+            </span>
+            <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent" />
+          </div>
+        </div>
       </div>
     </section>
   );

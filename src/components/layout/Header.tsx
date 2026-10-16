@@ -5,8 +5,8 @@ import { useLanguage } from '@/hooks/useLanguage';
 import type { Language } from '@/i18n/types';
 
 const NAV_LINKS = [
-  { key: 'work' as const, href: '#work' },
   { key: 'about' as const, href: '#about' },
+  { key: 'work' as const, href: '#work' },
   { key: 'experience' as const, href: '#experience' },
   { key: 'contact' as const, href: '#contact' },
 ];
@@ -23,7 +23,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -31,10 +31,12 @@ export function Header() {
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
     const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // When over hero (not scrolled): white text on dark bg
+  // When scrolled: warm bg with dark text
+  const isHero = !scrolled;
 
   return (
     <>
@@ -51,7 +53,9 @@ export function Header() {
             <a
               href="#"
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="font-serif text-[15px] tracking-[0.12em] uppercase text-[#1a1a1a] hover:opacity-60 transition-opacity duration-300"
+              className={`font-serif text-[15px] tracking-[0.12em] uppercase transition-colors duration-500 hover:opacity-60 ${
+                isHero ? 'text-white' : 'text-[#1a1a1a]'
+              }`}
               aria-label="Elang Argawana — Home"
             >
               Elang Argawana
@@ -63,7 +67,11 @@ export function Header() {
                 <button
                   key={key}
                   onClick={() => handleNavClick(href)}
-                  className="text-[13px] tracking-[0.08em] uppercase text-[#5a5a5a] hover:text-[#1a1a1a] transition-colors duration-300 cursor-pointer"
+                  className={`text-[13px] tracking-[0.08em] uppercase transition-colors duration-500 cursor-pointer ${
+                    isHero
+                      ? 'text-white/70 hover:text-white'
+                      : 'text-[#5a5a5a] hover:text-[#1a1a1a]'
+                  }`}
                 >
                   {t.nav[key]}
                 </button>
@@ -73,27 +81,23 @@ export function Header() {
             {/* Right cluster */}
             <div className="flex items-center gap-4 md:gap-6">
               {/* Language switcher */}
-              <div
-                className="flex items-center gap-1"
-                role="group"
-                aria-label="Language selector"
-              >
+              <div className="flex items-center gap-1" role="group" aria-label="Language selector">
                 {LANGS.map(({ code, label }, i) => (
                   <span key={code} className="flex items-center">
                     <button
                       onClick={() => setLanguage(code)}
                       aria-pressed={language === code}
                       aria-label={`Switch to ${label}`}
-                      className={`text-[11px] tracking-[0.06em] transition-colors duration-300 px-0.5 ${
+                      className={`text-[11px] tracking-[0.06em] transition-colors duration-500 px-0.5 ${
                         language === code
-                          ? 'text-[#1a1a1a] font-medium'
-                          : 'text-[#9a9a9a] hover:text-[#5a5a5a]'
+                          ? isHero ? 'text-white font-medium' : 'text-[#1a1a1a] font-medium'
+                          : isHero ? 'text-white/40 hover:text-white/70' : 'text-[#9a9a9a] hover:text-[#5a5a5a]'
                       }`}
                     >
                       {label}
                     </button>
                     {i < LANGS.length - 1 && (
-                      <span className="text-[#d0ccc6] text-[10px] ml-1">·</span>
+                      <span className={`text-[10px] ml-1 transition-colors duration-500 ${isHero ? 'text-white/20' : 'text-[#d0ccc6]'}`}>·</span>
                     )}
                   </span>
                 ))}
@@ -101,27 +105,15 @@ export function Header() {
 
               {/* Mobile menu toggle */}
               <button
-                className="md:hidden p-2 -mr-2 text-[#1a1a1a] hover:opacity-60 transition-opacity"
+                className={`md:hidden p-2 -mr-2 transition-opacity hover:opacity-60 ${isHero ? 'text-white' : 'text-[#1a1a1a]'}`}
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={menuOpen}
               >
                 <span className="flex flex-col gap-[5px] w-5">
-                  <span
-                    className={`block h-px bg-current transition-all duration-300 origin-center ${
-                      menuOpen ? 'rotate-45 translate-y-[7px]' : ''
-                    }`}
-                  />
-                  <span
-                    className={`block h-px bg-current transition-all duration-300 ${
-                      menuOpen ? 'opacity-0' : ''
-                    }`}
-                  />
-                  <span
-                    className={`block h-px bg-current transition-all duration-300 origin-center ${
-                      menuOpen ? '-rotate-45 -translate-y-[7px]' : ''
-                    }`}
-                  />
+                  <span className={`block h-px bg-current transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+                  <span className={`block h-px bg-current transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+                  <span className={`block h-px bg-current transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
                 </span>
               </button>
             </div>

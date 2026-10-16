@@ -48,7 +48,7 @@ export function Certifications() {
       aria-label="Certifications"
     >
       <div className="max-w-7xl mx-auto">
-        <SectionHeading index="07" heading={t.certifications.heading} />
+        <SectionHeading heading={t.certifications.heading} />
 
         <ul
           ref={listRef}

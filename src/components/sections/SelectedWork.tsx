@@ -3,7 +3,9 @@
 import { useRef, useEffect } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { projects, capabilityGroups } from '@/data/projects';
+import { projects } from '@/data/projects';
+import Image from 'next/image';
+import { ExternalLink } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,46 +13,55 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const PROJECT_COLORS = [
-  { bg: '#1a1a1a', text: '#f5f3ef', label: '#9a9a9a' },
-  { bg: '#f0ede7', text: '#1a1a1a', label: '#7a7a7a' },
-  { bg: '#e8e4de', text: '#1a1a1a', label: '#7a7a7a' },
-  { bg: '#1a1a1a', text: '#f5f3ef', label: '#9a9a9a' },
-  { bg: '#f0ede7', text: '#1a1a1a', label: '#7a7a7a' },
-  { bg: '#e8e4de', text: '#1a1a1a', label: '#7a7a7a' },
-];
-
 export function SelectedWork() {
   const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
-  const itemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      if (!itemsRef.current) return;
+      const cards = sectionRef.current?.querySelectorAll('[data-work-card]');
+      cards?.forEach((card) => {
+        const img = card.querySelector('[data-work-img]');
+        const info = card.querySelector('[data-work-info]');
 
-      const items = itemsRef.current.querySelectorAll('[data-project-item]');
+        if (img) {
+          gsap.from(img, {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            clipPath: 'inset(100% 0% 0% 0%)',
+            duration: 0.85,
+            ease: 'power4.out',
+          });
+        }
 
-      items.forEach((item) => {
-        gsap.from(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 88%',
-            toggleActions: 'play none none none',
-          },
-          y: 32,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-        });
+        if (info) {
+          gsap.from(info, {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            y: 16,
+            opacity: 0,
+            duration: 0.6,
+            delay: 0.15,
+            ease: 'power2.out',
+          });
+        }
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
+  const featuredProjects = projects.filter((p) => p.image);
+  const textProjects = projects.filter((p) => !p.image);
 
   return (
     <section
@@ -61,83 +72,138 @@ export function SelectedWork() {
     >
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          index="01"
           heading={t.work.heading}
           subheading={t.work.subheading}
         />
 
-        <div ref={itemsRef} className="flex flex-col">
-          {t.work.projects.map((project, i) => {
-            const projectData = projects[i];
-            const colors = PROJECT_COLORS[i % PROJECT_COLORS.length];
-            const isLarge = i === 0 || i === 3;
-
+        {/* Featured catalog grid — all 2 columns, uniform aspect ratio */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-10 md:gap-y-12 mb-12 md:mb-16">
+          {featuredProjects.map((project) => {
+            const translation = t.work.projects[project.index];
             return (
-              <div
-                key={projectData.id}
-                data-project-item
-                className="group border-t border-[#e0dbd3] last:border-b"
-              >
-                <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-12 items-start">
-                  {/* Left: content */}
-                  <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-                    {/* Index */}
-                    <span className="font-mono text-[11px] tracking-[0.1em] text-[#c0bbb4] mt-1 shrink-0 w-6">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
+              <div key={project.id} data-work-card className="group">
 
-                    {/* Info */}
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-baseline gap-3 mb-2">
-                        <h3
-                          className={`font-light text-[#1a1a1a] tracking-tight leading-tight ${
-                            isLarge
-                              ? 'text-[22px] md:text-[28px]'
-                              : 'text-[18px] md:text-[22px]'
-                          }`}
+                {/* Image — 16:9, object-top so we see the top of the screenshot */}
+                <div
+                  data-work-img
+                  className="relative overflow-hidden bg-[#e8e4de] mb-4"
+                  style={{ clipPath: 'inset(0% 0% 0% 0%)', aspectRatio: '16/9' }}
+                >
+                  <Image
+                    src={project.image!}
+                    alt={project.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 48vw"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+
+                  {/* Hover overlay */}
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 flex items-center justify-center bg-[#1a1a1a]/0 group-hover:bg-[#1a1a1a]/45 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                      aria-label={`Visit ${project.name}`}
+                    >
+                      <span className="flex items-center gap-2 text-white text-[12px] tracking-[0.08em] uppercase border border-white/60 px-5 py-2.5">
+                        <ExternalLink size={11} strokeWidth={1.5} />
+                        {t.work.view_project}
+                      </span>
+                    </a>
+                  )}
+                </div>
+
+                {/* Info */}
+                <div data-work-info className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="flex items-baseline flex-wrap gap-2 mb-1">
+                      <h3 className="text-[15px] md:text-[16px] font-light text-[#1a1a1a] tracking-tight">
+                        {translation?.name ?? project.name}
+                      </h3>
+                      <span className="font-mono text-[10px] tracking-[0.08em] text-[#9a9a9a] uppercase">
+                        {translation?.category ?? project.category}
+                      </span>
+                    </div>
+                    <p className="text-[13px] text-[#7a7a7a] leading-relaxed line-clamp-2">
+                      {translation?.description ?? project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mt-2.5">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="font-mono text-[10px] tracking-[0.05em] text-[#9a9a9a] border border-[#e0dbd3] px-1.5 py-0.5"
                         >
-                          {project.name}
-                        </h3>
-                        <span className="font-mono text-[10px] tracking-[0.1em] text-[#9a9a9a] uppercase">
-                          {project.category}
+                          {tech}
                         </span>
-                      </div>
-                      <p className="text-[14px] text-[#6a6a6a] leading-relaxed max-w-2xl">
-                        {project.description}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {projectData.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="font-mono text-[10px] tracking-[0.06em] text-[#9a9a9a] border border-[#e0dbd3] px-2 py-0.5"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Right: role */}
-                  <div className="md:text-right shrink-0">
-                    <p className="font-mono text-[10px] tracking-[0.1em] text-[#9a9a9a] uppercase mb-1">
-                      {t.work.role_label}
-                    </p>
-                    <p className="text-[13px] text-[#5a5a5a]">{project.role}</p>
-                  </div>
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${project.name}`}
+                      className="shrink-0 text-[#c0bbb4] hover:text-[#1a1a1a] transition-colors duration-300 mt-0.5"
+                    >
+                      <ExternalLink size={14} strokeWidth={1.5} />
+                    </a>
+                  )}
                 </div>
-
-                {/* Optional color accent bar */}
-                <div
-                  className="h-px w-0 group-hover:w-full transition-all duration-700 ease-out"
-                  style={{ backgroundColor: colors.bg === '#1a1a1a' ? '#1a1a1a' : '#c0bbb4' }}
-                />
               </div>
             );
           })}
         </div>
+
+        {/* Text-only projects */}
+        {textProjects.length > 0 && (
+          <div className="flex flex-col border-t border-[#e0dbd3]">
+            {textProjects.map((project) => {
+              const translation = t.work.projects[project.index];
+              return (
+                <div
+                  key={project.id}
+                  data-work-card
+                  className="border-b border-[#e0dbd3] py-6 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-start"
+                >
+                  <div>
+                    <div className="flex flex-wrap items-baseline gap-2.5 mb-1">
+                      <h3 className="text-[16px] font-light text-[#1a1a1a] tracking-tight">
+                        {translation?.name ?? project.name}
+                      </h3>
+                      <span className="font-mono text-[10px] tracking-[0.08em] text-[#9a9a9a] uppercase">
+                        {translation?.category ?? project.category}
+                      </span>
+                    </div>
+                    <p className="text-[13px] text-[#6a6a6a] leading-relaxed max-w-2xl">
+                      {translation?.description ?? project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mt-2.5">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="font-mono text-[10px] tracking-[0.05em] text-[#9a9a9a] border border-[#e0dbd3] px-1.5 py-0.5"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="shrink-0">
+                    <p className="font-mono text-[10px] tracking-[0.1em] text-[#9a9a9a] uppercase mb-1">
+                      {t.work.role_label}
+                    </p>
+                    <p className="text-[12px] text-[#5a5a5a]">
+                      {translation?.role ?? project.role}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -14,11 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Elang Argawana — Frontend & Fullstack Developer',
+  title: 'Elang Argawana — Software Developer',
   description:
-    'Personal portfolio of Elang Argawana, a web and mobile developer based in Semarang, Indonesia, building thoughtful digital experiences and practical software solutions.',
+    'Personal portfolio of Elang Argawana, a web and mobile software developer based in Semarang, Indonesia, building thoughtful digital experiences and practical software solutions.',
   keywords: [
     'Elang Argawana',
+    'software developer',
+    'software development',
     'frontend developer',
     'fullstack developer',
     'web developer',

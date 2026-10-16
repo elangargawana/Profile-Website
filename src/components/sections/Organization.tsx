@@ -45,7 +45,7 @@ export function Organization() {
       aria-label="Organization"
     >
       <div className="max-w-7xl mx-auto">
-        <SectionHeading index="06" heading={t.organization.heading} />
+        <SectionHeading heading={t.organization.heading} />
 
         <div
           ref={contentRef}

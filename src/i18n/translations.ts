@@ -10,7 +10,7 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
     },
     hero: {
       greeting: 'Elang Argawana',
-      role: 'Frontend Developer',
+      role: 'Software Development',
       tagline: 'Building thoughtful digital experiences through clean interfaces and practical engineering.',
       description:
         "I'm a web and mobile developer based in Semarang, Indonesia, working across frontend interfaces, backend systems, and API integrations.",
@@ -19,55 +19,36 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
       location: 'Semarang, Central Java, Indonesia',
       available: 'Available for new projects',
     },
-    work: {
-      heading: 'Selected Work',
-      subheading: 'A curated selection of projects from freelance and professional engagements.',
-      role_label: 'Role',
-      tech_label: 'Technologies',
-      view_project: 'View Project',
-      projects: [
+    specialty: {
+      heading: 'What I Do',
+      subheading: 'Services and capabilities across the software development lifecycle.',
+      services: [
         {
-          name: 'Arletta Prime Luxury',
-          category: 'Fullstack Development',
-          role: 'Freelance Fullstack Developer',
-          description:
-            'Developed three business applications for a hospitality company: a boarding-house management application, a cafe operations application, and a gym management application. Built to support day-to-day business operations across the company\'s service verticals.',
+          title: 'Frontend Development',
+          description: 'Crafting responsive, accessible, and performant user interfaces using modern frameworks. From pixel-perfect layouts to smooth interactions.',
         },
         {
-          name: 'KPR Jateng',
-          category: 'Frontend Development',
-          role: 'Frontend Developer',
-          description:
-            'Developed the KPR Jateng application using Next.js, in collaboration with BKK (Bursa Kerja Khusus). Built responsive user interfaces and integrated with backend services during the project engagement at PT Violet Global Indonesia.',
+          title: 'Fullstack Development',
+          description: 'End-to-end web application development — from database design and backend APIs to the user-facing interface. Reliable, maintainable systems.',
         },
         {
-          name: 'Narativa X Automation',
-          category: 'Fullstack Development',
-          role: 'Frontend Developer',
-          description:
-            'Built the frontend for Narativa X Automation using Next.js, integrated with a FastAPI backend. The project focused on automation workflows and delivering a responsive, production-ready interface.',
+          title: 'Mobile Development',
+          description: 'Cross-platform mobile applications using Flutter and Dart. Building practical apps that work smoothly on Android and iOS.',
         },
         {
-          name: 'INAmikro',
-          category: 'Mobile & API Development',
-          role: 'Mobile Developer',
-          description:
-            'Developed the application API using Laravel and integrated it with a Flutter mobile client. Built the INAmikro PPOB dashboard to simplify transaction monitoring and management for micro-business operators.',
+          title: 'API Integration',
+          description: 'Connecting services through RESTful APIs. Experienced in building and consuming APIs with Laravel, FastAPI, and Node.js.',
         },
-        {
-          name: 'E-Raport',
-          category: 'Frontend Development',
-          role: 'Frontend Developer',
-          description:
-            'Developed the user interface for the E-Raport system, integrated with the Kemdikbud (Ministry of Education) platform. Focused on building a clear, accessible interface for student report card management.',
-        },
-        {
-          name: 'PCC Websites',
-          category: 'Web Development',
-          role: 'Contributor',
-          description:
-            'Contributed to multiple organizational websites as part of the Polytechnic Computer Club (UKM PCC), including the PCC 2024 Administrator Election site, the PCC 2024 website redesign, and the Techcomfest and PCC 2025 National Seminar websites.',
-        },
+      ],
+    },
+    about: {
+      heading: 'About',
+      photo_alt: 'Profile photo placeholder — replace with your actual photo',
+      paragraphs: [
+        "I'm Elang — a web and mobile developer with a background in Informatics Engineering from Semarang State Polytechnic. I build practical digital products: applications that are usable, maintainable, and honest about what they do.",
+        "My work spans frontend interfaces, backend APIs, and mobile applications. I care about translating requirements into clear, functional experiences — and about understanding the engineering that makes that possible.",
+        "I've worked across early-stage freelance projects, professional agency environments, and campus organizations. Each context has pushed me to be more structured, more communicative, and more deliberate in how I approach software development.",
+        "I'm currently based in Semarang, Central Java, and open to opportunities in frontend development and fullstack engineering.",
       ],
     },
     capabilities: {
@@ -81,13 +62,61 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
         tools: 'Tools & Workflow',
       },
     },
-    about: {
-      heading: 'About',
-      paragraphs: [
-        "I'm Elang — a web and mobile developer with a background in Informatics Engineering from Semarang State Polytechnic. I build practical digital products: applications that are usable, maintainable, and honest about what they do.",
-        "My work spans frontend interfaces, backend APIs, and mobile applications. I care about translating requirements into clear, functional experiences — and about understanding the engineering that makes that possible.",
-        "I've worked across early-stage freelance projects, professional agency environments, and campus organizations. Each context has pushed me to be more structured, more communicative, and more deliberate in how I approach software development.",
-        "I'm currently based in Semarang, Central Java, and open to opportunities in frontend development and fullstack engineering.",
+    work: {
+      heading: 'Selected Work',
+      subheading: 'A curated selection of projects from freelance and professional engagements.',
+      role_label: 'Role',
+      tech_label: 'Technologies',
+      view_project: 'View Project',
+      projects: [
+        {
+          name: 'Arletta Prime Luxury',
+          category: 'Fullstack Development',
+          role: 'Freelance Fullstack Developer',
+          description: 'Main portal for Arletta Prime Luxury — a hospitality company with boarding-house, cafe, and gym services. Built with Laravel backend and a cohesive multi-product ecosystem.',
+        },
+        {
+          name: 'Arletta Gym',
+          category: 'Fullstack Development',
+          role: 'Freelance Fullstack Developer',
+          description: 'Gym management application developed for Arletta Prime Luxury, handling memberships, class schedules, and operational management.',
+        },
+        {
+          name: 'Arletta Kost',
+          category: 'Fullstack Development',
+          role: 'Freelance Fullstack Developer',
+          description: 'Boarding-house management application for Arletta, covering tenant management, room availability, and billing workflows.',
+        },
+        {
+          name: 'Arletta Cafe',
+          category: 'Fullstack Development',
+          role: 'Freelance Fullstack Developer',
+          description: 'Cafe operations management system with menus, orders, and reporting — part of the Arletta Prime Luxury business ecosystem.',
+        },
+        {
+          name: 'Aksara Media Promosi',
+          category: 'Web Development',
+          role: 'Frontend Developer',
+          description: 'Company website for a digital advertising and media agency, built with Next.js. Clean layout presenting services, portfolio, and contact.',
+        },
+        {
+          name: 'Desa Wisata Pandansari',
+          category: 'Web Development',
+          role: 'Frontend Developer',
+          description: 'Digital portal for an eco-tourism village, showcasing attractions, packages, and visitor information. Built with Next.js for performance and SEO.',
+        },
+        {
+          name: 'Oemah Lestari',
+          category: 'Frontend Development',
+          role: 'Frontend Developer',
+          description: 'Marketplace and housing credit (KPR) platform for residential properties and land in Central Java, developed in collaboration with PT BPR BKK Jateng and Disperakim using Next.js.',
+        },
+        {
+          name: 'INAmikro',
+          category: 'Mobile & API Development',
+          role: 'Mobile Developer',
+          description: 'Developed the application API using Laravel integrated with a Flutter mobile client. Built the PPOB dashboard for transaction monitoring.',
+        },
       ],
     },
     experience: {
@@ -171,10 +200,7 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
         { name: 'Magang Bersertifikat Angkatan 7', year: '2024' },
         { name: 'MSIB INAmikro — Edukasi dan Digitalisasi UMKM & Pedagang Pasar Rakyat', year: '2024' },
         { name: 'MTCNA', year: '2025' },
-        { name: 'Belajar Membuat Front-End Web untuk Pemula', year: '2024' },
         { name: 'Database Design', year: '2023' },
-        { name: 'Belajar Dasar Pemrograman JavaScript', year: '2023' },
-        { name: 'Belajar Dasar Pemrograman Web', year: '2023' },
         { name: 'Database Programming with SQL', year: '2023' },
       ],
     },
@@ -202,7 +228,7 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
     },
     hero: {
       greeting: 'Elang Argawana',
-      role: 'Frontend Developer',
+      role: 'Software Development',
       tagline: 'Membangun pengalaman digital yang bermakna melalui antarmuka bersih dan rekayasa yang praktis.',
       description:
         'Saya developer web dan mobile yang berbasis di Semarang, Indonesia — bekerja di ranah frontend, backend, dan integrasi API.',
@@ -211,55 +237,36 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
       location: 'Semarang, Jawa Tengah, Indonesia',
       available: 'Tersedia untuk proyek baru',
     },
-    work: {
-      heading: 'Proyek Pilihan',
-      subheading: 'Pilihan proyek dari pekerjaan lepas dan pengalaman profesional.',
-      role_label: 'Peran',
-      tech_label: 'Teknologi',
-      view_project: 'Lihat Proyek',
-      projects: [
+    specialty: {
+      heading: 'Yang Saya Lakukan',
+      subheading: 'Layanan dan kemampuan di seluruh siklus pengembangan perangkat lunak.',
+      services: [
         {
-          name: 'Arletta Prime Luxury',
-          category: 'Pengembangan Fullstack',
-          role: 'Freelance Fullstack Developer',
-          description:
-            'Mengembangkan tiga aplikasi bisnis untuk perusahaan perhotelan: aplikasi manajemen kost, aplikasi operasional kafe, dan aplikasi manajemen gym — guna mendukung operasional bisnis sehari-hari.',
+          title: 'Pengembangan Frontend',
+          description: 'Membangun antarmuka pengguna yang responsif, aksesibel, dan berkinerja tinggi menggunakan framework modern. Dari layout piksel sempurna hingga interaksi yang mulus.',
         },
         {
-          name: 'KPR Jateng',
-          category: 'Pengembangan Frontend',
-          role: 'Frontend Developer',
-          description:
-            'Mengembangkan aplikasi KPR Jateng menggunakan Next.js, bekerja sama dengan BKK (Bursa Kerja Khusus). Membangun antarmuka responsif dan mengintegrasikannya dengan layanan backend.',
+          title: 'Pengembangan Fullstack',
+          description: 'Pengembangan aplikasi web end-to-end — dari desain database dan backend API hingga antarmuka pengguna. Sistem yang andal dan mudah dirawat.',
         },
         {
-          name: 'Narativa X Automation',
-          category: 'Pengembangan Fullstack',
-          role: 'Frontend Developer',
-          description:
-            'Membangun frontend untuk Narativa X Automation menggunakan Next.js yang terintegrasi dengan backend FastAPI. Fokus pada alur otomatisasi dan penyampaian antarmuka yang responsif dan siap produksi.',
+          title: 'Pengembangan Mobile',
+          description: 'Aplikasi mobile lintas platform menggunakan Flutter dan Dart. Membangun aplikasi praktis yang berjalan lancar di Android dan iOS.',
         },
         {
-          name: 'INAmikro',
-          category: 'Pengembangan Mobile & API',
-          role: 'Mobile Developer',
-          description:
-            'Mengembangkan API aplikasi menggunakan Laravel dan mengintegrasikannya dengan klien mobile Flutter. Membangun dashboard PPOB INAmikro untuk menyederhanakan pemantauan dan pengelolaan transaksi.',
+          title: 'Integrasi API',
+          description: 'Menghubungkan layanan melalui RESTful API. Berpengalaman membangun dan mengonsumsi API dengan Laravel, FastAPI, dan Node.js.',
         },
-        {
-          name: 'E-Raport',
-          category: 'Pengembangan Frontend',
-          role: 'Frontend Developer',
-          description:
-            'Mengembangkan antarmuka pengguna untuk sistem E-Raport yang terintegrasi dengan platform Kemdikbud. Fokus pada tampilan yang jelas dan mudah diakses untuk pengelolaan rapor siswa.',
-        },
-        {
-          name: 'Website PCC',
-          category: 'Pengembangan Web',
-          role: 'Kontributor',
-          description:
-            'Berkontribusi pada beberapa website organisasi sebagai bagian dari UKM PCC, termasuk situs Pemilihan Pengurus PCC 2024, redesain website PCC 2024, serta website Techcomfest dan Seminar Nasional PCC 2025.',
-        },
+      ],
+    },
+    about: {
+      heading: 'Tentang Saya',
+      photo_alt: 'Placeholder foto profil — ganti dengan foto wajah Anda',
+      paragraphs: [
+        'Saya Elang — developer web dan mobile dengan latar belakang Teknik Informatika dari Politeknik Negeri Semarang. Saya membangun produk digital yang praktis: aplikasi yang mudah digunakan, mudah dikelola, dan jujur tentang fungsinya.',
+        'Pekerjaan saya mencakup antarmuka frontend, backend API, dan aplikasi mobile. Saya peduli tentang menerjemahkan kebutuhan menjadi pengalaman yang fungsional dan jelas — serta memahami rekayasa yang mendukungnya.',
+        'Saya telah bekerja di berbagai konteks: proyek freelance tahap awal, lingkungan agensi profesional, dan organisasi kampus. Setiap konteks mendorong saya untuk menjadi lebih terstruktur, komunikatif, dan disiplin dalam pendekatan saya terhadap pengembangan perangkat lunak.',
+        'Saat ini saya berbasis di Semarang, Jawa Tengah, dan terbuka untuk peluang di bidang pengembangan frontend dan fullstack engineering.',
       ],
     },
     capabilities: {
@@ -273,13 +280,61 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
         tools: 'Alat & Workflow',
       },
     },
-    about: {
-      heading: 'Tentang Saya',
-      paragraphs: [
-        'Saya Elang — developer web dan mobile dengan latar belakang Teknik Informatika dari Politeknik Negeri Semarang. Saya membangun produk digital yang praktis: aplikasi yang mudah digunakan, mudah dikelola, dan jujur tentang fungsinya.',
-        'Pekerjaan saya mencakup antarmuka frontend, backend API, dan aplikasi mobile. Saya peduli tentang menerjemahkan kebutuhan menjadi pengalaman yang fungsional dan jelas — serta memahami rekayasa yang mendukungnya.',
-        'Saya telah bekerja di berbagai konteks: proyek freelance tahap awal, lingkungan agensi profesional, dan organisasi kampus. Setiap konteks mendorong saya untuk menjadi lebih terstruktur, komunikatif, dan disiplin dalam pendekatan saya terhadap pengembangan perangkat lunak.',
-        'Saat ini saya berbasis di Semarang, Jawa Tengah, dan terbuka untuk peluang di bidang pengembangan frontend dan fullstack engineering.',
+    work: {
+      heading: 'Proyek Pilihan',
+      subheading: 'Pilihan proyek dari pekerjaan lepas dan pengalaman profesional.',
+      role_label: 'Peran',
+      tech_label: 'Teknologi',
+      view_project: 'Lihat Proyek',
+      projects: [
+        {
+          name: 'Arletta Prime Luxury',
+          category: 'Pengembangan Fullstack',
+          role: 'Freelance Fullstack Developer',
+          description: 'Portal utama Arletta Prime Luxury — perusahaan perhotelan dengan layanan kost, kafe, dan gym. Dibangun dengan backend Laravel dalam ekosistem multi-produk.',
+        },
+        {
+          name: 'Arletta Gym',
+          category: 'Pengembangan Fullstack',
+          role: 'Freelance Fullstack Developer',
+          description: 'Aplikasi manajemen gym untuk Arletta Prime Luxury — mengelola keanggotaan, jadwal kelas, dan operasional harian.',
+        },
+        {
+          name: 'Arletta Kost',
+          category: 'Pengembangan Fullstack',
+          role: 'Freelance Fullstack Developer',
+          description: 'Aplikasi manajemen kost Arletta, mencakup pengelolaan penyewa, ketersediaan kamar, dan alur penagihan.',
+        },
+        {
+          name: 'Arletta Cafe',
+          category: 'Pengembangan Fullstack',
+          role: 'Freelance Fullstack Developer',
+          description: 'Sistem manajemen operasional kafe dengan fitur menu, pesanan, dan pelaporan — bagian dari ekosistem bisnis Arletta Prime Luxury.',
+        },
+        {
+          name: 'Aksara Media Promosi',
+          category: 'Pengembangan Web',
+          role: 'Frontend Developer',
+          description: 'Website perusahaan untuk agensi periklanan dan media digital, dibangun dengan Next.js. Tampilan bersih yang menyajikan layanan, portofolio, dan kontak.',
+        },
+        {
+          name: 'Desa Wisata Pandansari',
+          category: 'Pengembangan Web',
+          role: 'Frontend Developer',
+          description: 'Portal digital untuk desa wisata, menampilkan destinasi, paket, dan informasi pengunjung. Dibangun dengan Next.js untuk performa dan SEO optimal.',
+        },
+        {
+          name: 'Oemah Lestari',
+          category: 'Pengembangan Frontend',
+          role: 'Frontend Developer',
+          description: 'Platform marketplace dan kredit perumahan (KPR) serta lahan hunian se-Jawa Tengah, dikembangkan bekerja sama dengan PT BPR BKK Jateng dan Disperakim menggunakan Next.js.',
+        },
+        {
+          name: 'INAmikro',
+          category: 'Pengembangan Mobile & API',
+          role: 'Mobile Developer',
+          description: 'Mengembangkan API aplikasi menggunakan Laravel yang terintegrasi dengan klien mobile Flutter. Membangun dashboard PPOB untuk pemantauan transaksi.',
+        },
       ],
     },
     experience: {
@@ -363,10 +418,7 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
         { name: 'Magang Bersertifikat Angkatan 7', year: '2024' },
         { name: 'MSIB INAmikro — Edukasi dan Digitalisasi UMKM & Pedagang Pasar Rakyat', year: '2024' },
         { name: 'MTCNA', year: '2025' },
-        { name: 'Belajar Membuat Front-End Web untuk Pemula', year: '2024' },
         { name: 'Database Design', year: '2023' },
-        { name: 'Belajar Dasar Pemrograman JavaScript', year: '2023' },
-        { name: 'Belajar Dasar Pemrograman Web', year: '2023' },
         { name: 'Database Programming with SQL', year: '2023' },
       ],
     },
@@ -394,7 +446,7 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
     },
     hero: {
       greeting: 'Elang Argawana',
-      role: 'フロントエンド開発者',
+      role: 'Software Development',
       tagline: '明快なインターフェースと実践的なエンジニアリングで、思慮深いデジタル体験を構築します。',
       description:
         'インドネシア・スマランを拠点とするウェブ・モバイル開発者。フロントエンドからバックエンド、API連携まで幅広く担当しています。',
@@ -403,55 +455,36 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
       location: 'インドネシア、中部ジャワ州スマラン',
       available: '新規プロジェクト受付中',
     },
-    work: {
-      heading: '制作実績',
-      subheading: 'フリーランスおよびプロとしての案件から厳選した作品をご紹介します。',
-      role_label: '役割',
-      tech_label: '技術スタック',
-      view_project: 'プロジェクトを見る',
-      projects: [
+    specialty: {
+      heading: 'できること',
+      subheading: 'ソフトウェア開発ライフサイクル全体にわたるサービスと能力。',
+      services: [
         {
-          name: 'Arletta Prime Luxury',
-          category: 'フルスタック開発',
-          role: 'フリーランス フルスタック開発者',
-          description:
-            '宿泊事業会社向けに、コスト（下宿）管理アプリ、カフェ運営アプリ、ジム管理アプリの3種類のビジネスアプリケーションを開発。各サービス部門の業務効率化を支援しました。',
+          title: 'フロントエンド開発',
+          description: 'モダンなフレームワークを使用した、レスポンシブ・アクセシブル・高パフォーマンスなUIの構築。レイアウトの精度からスムーズなインタラクションまで対応します。',
         },
         {
-          name: 'KPR Jateng',
-          category: 'フロントエンド開発',
-          role: 'フロントエンド開発者',
-          description:
-            'Next.jsを使用してKPR Jatengアプリケーションを開発。BKKとの協働のもと、レスポンシブなUIを構築し、バックエンドサービスと連携しました。',
+          title: 'フルスタック開発',
+          description: 'データベース設計・バックエンドAPIからユーザーインターフェースまで、ウェブアプリケーションのエンドツーエンド開発。信頼性が高く保守しやすいシステムを構築します。',
         },
         {
-          name: 'Narativa X Automation',
-          category: 'フルスタック開発',
-          role: 'フロントエンド開発者',
-          description:
-            'Next.jsとFastAPIバックエンドを組み合わせたNarativa X Automationのフロントエンドを開発。自動化ワークフローを支える、レスポンシブで本番対応済みのUIを構築しました。',
+          title: 'モバイル開発',
+          description: 'FlutterとDartを使ったクロスプラットフォームモバイルアプリの開発。AndroidとiOSでスムーズに動作する実用的なアプリを構築します。',
         },
         {
-          name: 'INAmikro',
-          category: 'モバイル・API開発',
-          role: 'モバイル開発者',
-          description:
-            'LaravelでAPIを開発しFlutterクライアントと連携。小規模事業者向けのPPOBダッシュボードを構築し、取引の監視・管理を容易にしました。',
+          title: 'API連携',
+          description: 'RESTful APIを通じたサービス間連携。Laravel、FastAPI、Node.jsでのAPI構築・利用の豊富な経験があります。',
         },
-        {
-          name: 'E-Raport',
-          category: 'フロントエンド開発',
-          role: 'フロントエンド開発者',
-          description:
-            '文部科学省（Kemdikbud）プラットフォームに統合された成績管理システムE-Raportのユーザーインターフェースを開発。明快でアクセシブルな画面設計に注力しました。',
-        },
-        {
-          name: 'PCCウェブサイト群',
-          category: 'ウェブ開発',
-          role: 'コントリビューター',
-          description:
-            'UKM PCCの一員として、PCC 2024役員選挙サイト、PCC 2024ウェブサイトのリデザイン、TechcomfestおよびPCC 2025全国セミナーサイトなど複数のサイト開発に貢献しました。',
-        },
+      ],
+    },
+    about: {
+      heading: '私について',
+      photo_alt: 'プロフィール写真プレースホルダー — 実際の写真に置き換えてください',
+      paragraphs: [
+        'スマラン国立ポリテクニクでの情報工学を背景に持つ、ウェブ・モバイル開発者のElangです。実用的なデジタルプロダクト——使いやすく、保守しやすく、目的に忠実なアプリケーション——の構築を追求しています。',
+        'フロントエンドUI、バックエンドAPI、モバイルアプリと幅広く取り組んでいます。要件を明快な機能体験へと落とし込み、それを支えるエンジニアリングを深く理解することを大切にしています。',
+        'フリーランスの初期プロジェクト、プロのエージェンシー環境、大学のサークル活動など、さまざまな場面で経験を積みました。それぞれの経験が、ソフトウェア開発への取り組みをより構造的・体系的なものにしてくれています。',
+        '現在はインドネシア・中部ジャワ州スマランを拠点とし、フロントエンド開発やフルスタックエンジニアリングの機会を求めています。',
       ],
     },
     capabilities: {
@@ -465,13 +498,61 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
         tools: 'ツール & ワークフロー',
       },
     },
-    about: {
-      heading: '私について',
-      paragraphs: [
-        'スマラン国立ポリテクニクでの情報工学を背景に持つ、ウェブ・モバイル開発者のElangです。実用的なデジタルプロダクト——使いやすく、保守しやすく、目的に忠実なアプリケーション——の構築を追求しています。',
-        'フロントエンドUI、バックエンドAPI、モバイルアプリと幅広く取り組んでいます。要件を明快な機能体験へと落とし込み、それを支えるエンジニアリングを深く理解することを大切にしています。',
-        'フリーランスの初期プロジェクト、プロのエージェンシー環境、大学のサークル活動など、さまざまな場面で経験を積みました。それぞれの経験が、ソフトウェア開発への取り組みをより構造的・体系的なものにしてくれています。',
-        '現在はインドネシア・中部ジャワ州スマランを拠点とし、フロントエンド開発やフルスタックエンジニアリングの機会を求めています。',
+    work: {
+      heading: '制作実績',
+      subheading: 'フリーランスおよびプロとしての案件から厳選した作品をご紹介します。',
+      role_label: '役割',
+      tech_label: '技術スタック',
+      view_project: 'プロジェクトを見る',
+      projects: [
+        {
+          name: 'Arletta Prime Luxury',
+          category: 'フルスタック開発',
+          role: 'フリーランス フルスタック開発者',
+          description: 'コスト・カフェ・ジムを展開する宿泊事業会社のメインポータル。Laravelバックエンドで構築されたマルチプロダクトエコシステム。',
+        },
+        {
+          name: 'Arletta Gym',
+          category: 'フルスタック開発',
+          role: 'フリーランス フルスタック開発者',
+          description: 'Arletta Prime Luxury向けのジム管理アプリ。会員管理、クラス予約、業務管理機能を搭載。',
+        },
+        {
+          name: 'Arletta Kost',
+          category: 'フルスタック開発',
+          role: 'フリーランス フルスタック開発者',
+          description: 'Arletta向けの下宿管理アプリ。入居者管理、部屋の空き状況、請求ワークフローを管理。',
+        },
+        {
+          name: 'Arletta Cafe',
+          category: 'フルスタック開発',
+          role: 'フリーランス フルスタック開発者',
+          description: 'メニュー・注文・レポート機能を持つカフェ運営管理システム。Arlettaのビジネスエコシステムの一部。',
+        },
+        {
+          name: 'Aksara Media Promosi',
+          category: 'ウェブ開発',
+          role: 'フロントエンド開発者',
+          description: 'デジタル広告・メディアエージェンシーのコーポレートサイト。Next.jsで構築し、サービス・実績・連絡先を清潔感あるレイアウトで表示。',
+        },
+        {
+          name: 'Desa Wisata Pandansari',
+          category: 'ウェブ開発',
+          role: 'フロントエンド開発者',
+          description: 'エコツーリズム村のデジタルポータル。観光スポット、ツアーパッケージ、訪問者情報を掲載。Next.jsでパフォーマンスとSEOを最適化。',
+        },
+        {
+          name: 'Oemah Lestari',
+          category: 'フロントエンド開発',
+          role: 'フロントエンド開発者',
+          description: 'PT BPR BKK JatengおよびDisperakimと連携した、中部ジャワ州向けの住宅・土地ローン（KPR）および不動産マーケットプレイス。Next.jsで構築。',
+        },
+        {
+          name: 'INAmikro',
+          category: 'モバイル・API開発',
+          role: 'モバイル開発者',
+          description: 'LaravelでAPIを開発しFlutterクライアントと連携。PPOBダッシュボードで取引の監視・管理を効率化。',
+        },
       ],
     },
     experience: {
@@ -555,10 +636,7 @@ export const translations: Record<'en' | 'id' | 'jp', Translations> = {
         { name: 'Magang Bersertifikat Angkatan 7', year: '2024' },
         { name: 'MSIB INAmikro — Edukasi dan Digitalisasi UMKM & Pedagang Pasar Rakyat', year: '2024' },
         { name: 'MTCNA', year: '2025' },
-        { name: 'Belajar Membuat Front-End Web untuk Pemula', year: '2024' },
         { name: 'Database Design', year: '2023' },
-        { name: 'Belajar Dasar Pemrograman JavaScript', year: '2023' },
-        { name: 'Belajar Dasar Pemrograman Web', year: '2023' },
         { name: 'Database Programming with SQL', year: '2023' },
       ],
     },
