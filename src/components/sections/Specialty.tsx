@@ -1,39 +1,41 @@
-'use client';
+"use client";
 
-import { useRef, useEffect } from 'react';
-import { useLanguage } from '@/hooks/useLanguage';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useEffect } from "react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const SERVICE_NUMBERS = ['01', '02', '03', '04'];
+const SERVICE_NUMBERS = ["1", "2", "3", "4"];
 
 export function Specialty() {
   const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      const cards = sectionRef.current?.querySelectorAll('[data-service-card]');
+      const cards = sectionRef.current?.querySelectorAll("[data-service-card]");
       cards?.forEach((card, i) => {
         gsap.from(card, {
           scrollTrigger: {
             trigger: card,
-            start: 'top 88%',
-            toggleActions: 'play none none none',
+            start: "top 88%",
+            toggleActions: "play none none none",
           },
           y: 28,
           opacity: 0,
           duration: 0.7,
           delay: i * 0.1,
-          ease: 'power3.out',
+          ease: "power3.out",
         });
       });
     }, sectionRef);

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useRef, useEffect } from 'react';
-import { useLanguage } from '@/hooks/useLanguage';
-import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useEffect } from "react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -17,32 +17,34 @@ export function Contact() {
   const detailsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
       gsap.from(headRef.current, {
         scrollTrigger: {
           trigger: headRef.current,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
+          start: "top 85%",
+          toggleActions: "play none none none",
         },
         y: 32,
         opacity: 0,
         duration: 0.9,
-        ease: 'power3.out',
+        ease: "power3.out",
       });
 
       gsap.from(detailsRef.current, {
         scrollTrigger: {
           trigger: detailsRef.current,
-          start: 'top 90%',
-          toggleActions: 'play none none none',
+          start: "top 90%",
+          toggleActions: "play none none none",
         },
         y: 24,
         opacity: 0,
         duration: 0.7,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
     }, sectionRef);
 
@@ -58,9 +60,6 @@ export function Contact() {
     >
       <div className="max-w-7xl mx-auto">
         <div ref={headRef}>
-          <p className="font-mono text-[11px] tracking-[0.14em] text-[#5a5a5a] uppercase mb-6">
-            09
-          </p>
           <h2 className="text-[clamp(32px,5vw,72px)] font-light tracking-[-0.02em] text-[#f5f3ef] leading-tight mb-6">
             {t.contact.heading}
           </h2>
