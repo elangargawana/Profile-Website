@@ -99,6 +99,7 @@ const jsonLd = {
       sameAs: [
         'https://github.com/elangargawana',
         'https://www.linkedin.com/in/elang-argawana',
+        'https://www.instagram.com/elngargwna',
       ],
       knowsAbout: [
         'Software Engineering',

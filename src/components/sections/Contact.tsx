@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { Mail, MapPin, ExternalLink } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -140,6 +140,15 @@ export function Contact() {
               >
                 <ExternalLink size={12} strokeWidth={1.5} />
                 LinkedIn
+              </a>
+              <a
+                href="https://www.instagram.com/elngargwna"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] text-[#9a9a9a] hover:text-[#f5f3ef] transition-colors duration-300 flex items-center gap-2"
+              >
+                <ExternalLink size={12} strokeWidth={1.5} />
+                Instagram
               </a>
             </div>
           </div>

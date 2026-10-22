@@ -43,6 +43,15 @@ export function Footer() {
             >
               LinkedIn <ExternalLink size={10} strokeWidth={1.5} />
             </a>
+            <a
+              href="https://www.instagram.com/elngargwna"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-[11px] tracking-[0.06em] text-[#9a9a9a] hover:text-[#1a1a1a] transition-colors duration-300 flex items-center gap-1"
+            >
+              Instagram <ExternalLink size={10} strokeWidth={1.5} />
+            </a>
           </div>
 
           <p className="text-[12px] text-[#b8b4ae]">{t.footer.rights}</p>
