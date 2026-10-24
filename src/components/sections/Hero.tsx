@@ -5,13 +5,14 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { MapPin, ArrowDownRight } from 'lucide-react';
 import Image from 'next/image';
 import gsap from 'gsap';
+import BlurText from '@/components/BlurText';
 
 export function Hero() {
   const { t } = useLanguage();
   const containerRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLDivElement>(null);
   const subRef = useRef<HTMLDivElement>(null);
+  const roleRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -28,14 +29,14 @@ export function Hero() {
         ease: 'power3.out',
       })
         .from(
-          headlineRef.current,
+          roleRef.current,
           {
-            y: 40,
+            y: 10,
             opacity: 0,
-            duration: 1.1,
-            ease: 'power3.out',
+            duration: 0.7,
+            ease: 'power2.out',
           },
-          '-=1.0'
+          '-=0.8'
         )
         .from(
           subRef.current,
@@ -45,7 +46,7 @@ export function Hero() {
             duration: 0.8,
             ease: 'power2.out',
           },
-          '-=0.6'
+          '-=0.2'
         );
     }, containerRef);
 
@@ -85,17 +86,44 @@ export function Hero() {
       <div className="relative z-10 min-h-screen flex flex-col justify-between px-6 md:px-10 lg:px-16 pt-32 pb-10 md:pb-12">
 
         {/* Main headline — bottom-left, large */}
-        <div ref={headlineRef} className="flex-1 flex flex-col justify-end max-w-2xl">
+        <div className="flex-1 flex flex-col justify-end max-w-2xl">
           <div className="mb-5">
-            <span className="font-mono text-[11px] tracking-[0.16em] text-white/50 uppercase">
+            <span
+              ref={roleRef}
+              className="font-mono text-[11px] tracking-[0.16em] text-white/50 uppercase"
+            >
               {t.hero.role}
             </span>
           </div>
 
-          <h1 className="text-[clamp(52px,8vw,112px)] font-light tracking-[-0.03em] text-white !leading-[0.91] mb-8">
-            Elang
-            <br />
-            <span className="text-white/40">Argawana</span>
+          {/* BlurText for "Elang" */}
+          <h1 className="text-[clamp(52px,8vw,112px)] font-light tracking-[-0.03em] text-white mb-8 flex flex-col" style={{ lineHeight: 0.91 }}>
+            {/* BlurText renders <p> — reset its margin & line-height so spacing matches original */}
+            <BlurText
+              text="Elang"
+              delay={80}
+              animateBy="letters"
+              direction="top"
+              effect="blur"
+              trigger="load"
+              stepDuration={0.45}
+              blur={14}
+              distance={30}
+              className="!m-0 !leading-[0.91] !text-white font-light tracking-[-0.03em]"
+            />
+            <BlurText
+              text="Argawana"
+              delay={60}
+              animateBy="letters"
+              direction="top"
+              effect="blur"
+              trigger="load"
+              stepDuration={0.45}
+              blur={14}
+              distance={30}
+              color="rgba(255,255,255,0.4)"
+              className="!m-0 !leading-[0.91] font-light tracking-[-0.03em]"
+            />
           </h1>
 
         </div>

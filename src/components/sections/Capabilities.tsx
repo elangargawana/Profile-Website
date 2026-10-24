@@ -56,6 +56,11 @@ const TechIcons: Record<string, () => React.ReactElement> = {
       <path d="M6 9c.5-2.5 2-4 4.5-4 2.5 0 3 2 4.5 2 1.5 0 2.5-1 3-2.5M4.5 15c.5-2.5 2-4 4.5-4 2.5 0 3 2 4.5 2 1.5 0 2.5-1 3-2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   ),
+  inertia: () => (
+    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4">
+      <path d="M6 6l5 6-5 6M13 6l5 6-5 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
   php: () => (
     <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4">
       <ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" strokeWidth="1.5"/>
